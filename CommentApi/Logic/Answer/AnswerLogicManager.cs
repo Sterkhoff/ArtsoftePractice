@@ -1,6 +1,7 @@
 using AutoMapper;
 using Logic.Answer.Interfaces;
 using Dal.Answers.Interfaces;
+using Dal.Answers.Models;
 using Dal.Comments.Models;
 using Logic.Answer.Models;
 

@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using Dal.Answers.Interfaces;
+using Dal.Answers.Models;
 using Dal.Comments.Models;
 
 namespace Dal.Answers;

@@ -1,3 +1,4 @@
+using Dal.Answers.Models;
 using Dal.Comments.Models;
 
 namespace Dal.Answers.Interfaces;
