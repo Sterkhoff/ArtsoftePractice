@@ -1,34 +1,33 @@
-﻿using Domain.Interfaces;
-using Domain.Entities;
+﻿using Domain.Entities;
+using Domain.Repositories;
 using Services.Interfaces;
 
 namespace Services;
 
-public class TestService(IStoreTest storeTest) : ITestService
+internal class TestService(ITestRepository testRepository, IUserRepository userRepository) : ITestService
 {
-    private readonly IStoreTest _storeTest = storeTest;
+    private readonly ITestRepository _testRepository = testRepository;
+    private readonly IUserRepository _userRepository = userRepository;
     public async Task<Guid> CreateTestAsync(Test test)
     {
-        return await test.SaveAsync(_storeTest);
+        var creator = await _userRepository.GetUserByIdAsync(test.CreatorId);
+        await creator.CreateTestAsync(test);
+        return await test.SaveAsync(_testRepository);
     }
 
-    public async Task<List<Test>> GetUserPassedTestsAsync(Guid userId)
+    public async Task<List<Question>> GetTestQuestionsAsync(Guid testId)
     {
-        return await _storeTest.GetUserPassedTests(userId);
-    }
-
-    public async Task<List<Test>> GetUserCreatedTestsAsync(Guid userId)
-    {
-        return await _storeTest.GetUserCreatedTests(userId);
+        var test = await _testRepository.GetTestByIdAsync(testId);
+        return test.Questions;
     }
 
     public async Task<Test[]> GetAllAsync()
     {
-        return await _storeTest.GetAllAsync();
+        return await _testRepository.GetAllAsync();
     }
 
     public async Task<Test> GetTestByIdAsync(Guid testId)
     {
-       return await _storeTest.GetTestByIdAsync(testId);
+       return await _testRepository.GetTestByIdAsync(testId);
     }
 }

@@ -4,4 +4,4 @@ using Api.Controllers.Question.Responses;
 
 namespace Api.Controllers.Test.Requests;
 
-public record CreateTestRequest(Guid CreatorId, string Title, List<CreateQuestionRequest> Questions);
+public record CreateTestRequest(Guid CreatorId, string Title);

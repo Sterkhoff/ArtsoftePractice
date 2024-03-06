@@ -1,10 +1,10 @@
 ﻿using System.Collections.Concurrent;
-using Domain.Interfaces;
 using Domain.Entities;
+using Domain.Repositories;
 
 namespace Infrastructure.Data;
 
-public class UserRepository : IStoreUser
+public class UserRepository : IUserRepository
 {
     private readonly ConcurrentDictionary<Guid, User> _usersData = new();
     public async Task<Guid> AddUserAsync(User user)

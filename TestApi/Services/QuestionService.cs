@@ -1,25 +1,23 @@
 ﻿using Domain.Entities;
-using Domain.Interfaces;
+using Domain.Repositories;
 using Services.Interfaces;
 
 namespace Services;
 
-public class QuestionService(IStoreQuestion storeQuestion) : IQuestionService
+internal class QuestionService(IQuestionRepository questionRepository, ITestRepository testRepository) : IQuestionService
 {
-    private readonly IStoreQuestion _storeQuestion = storeQuestion;
+    private readonly IQuestionRepository _questionRepository = questionRepository;
+    private readonly ITestRepository _testRepository = testRepository;
     
     public async Task<Guid> CreateQuestionAsync(Question question)
     {
-        return await question.SaveAsync(_storeQuestion);
-    }
-
-    public async Task<List<Question>> GetTestQuestionsAsync(Guid testId)
-    { 
-        return await _storeQuestion.GetTestQuestionsAsync(testId);
+        var test = await _testRepository.GetTestByIdAsync(question.TestId);
+        await test.AddQuestionAsync(question);
+        return await question.SaveAsync(_questionRepository);
     }
 
     public async Task<Question> GetQuestionByIdAsync(Guid questionId)
     {
-        return await _storeQuestion.GetQuestionById(questionId);
+        return await _questionRepository.GetQuestionById(questionId);
     }
 }

@@ -1,10 +1,9 @@
 using Domain.Entities;
 
-namespace Domain.Interfaces;
+namespace Domain.Repositories;
 
-public interface IStoreQuestion
+public interface IQuestionRepository
 {
     public Task<Guid> AddQuestionAsync(Question question);
-    public Task<List<Question>> GetTestQuestionsAsync(Guid testId);
     public Task<Question> GetQuestionById(Guid questionId);
 }

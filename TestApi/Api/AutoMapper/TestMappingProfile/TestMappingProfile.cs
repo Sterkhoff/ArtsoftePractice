@@ -1,6 +1,7 @@
 using Api.Controllers.Question.Responses;
 using Api.Controllers.Test.Requests;
 using Api.Controllers.Test.Responses;
+using Api.Controllers.User.Responses;
 using AutoMapper;
 using Domain.Entities;
 
@@ -30,11 +31,10 @@ public class TestMappingProfile : Profile
                         new GetTestQuestionsResponse(x.Questions.Select(z =>
                                 new GetQuestionResponse(z.Id, z.TestId, z.QuestionText, z.Answers, z.RightAnswer))
                             .ToList())))));
+        
         CreateMap<Test, CreateTestResponse>();
         
         CreateMap<CreateTestRequest, Test>()
-            .ConstructUsing(x => new Test(new Guid(), x.CreatorId, x.Title,
-                x.Questions.Select(questReq => new Question(new Guid(), questReq.TestId, questReq.QuestionText,
-                    questReq.Answers, questReq.RightAnswer)).ToList()));
+            .ConstructUsing(x => new Test(new Guid(), x.CreatorId, x.Title, new List<Question>()));
     }
 }

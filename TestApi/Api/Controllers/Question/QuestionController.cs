@@ -14,6 +14,7 @@ public class QuestionController(IMapper mapper, IQuestionService questionService
 
     
     [Route("create")]
+    [HttpPost]
     [ProducesResponseType<CreateQuestionResponse>(200)]
     public async Task<IActionResult> CreateQuestionAsync([FromBody] CreateQuestionRequest questionRequest)
     {
@@ -22,15 +23,8 @@ public class QuestionController(IMapper mapper, IQuestionService questionService
         return Ok(_mapper.Map<CreateQuestionResponse>(question));
     }
 
-    [Route("get_test_questions")]
-    [ProducesResponseType<GetTestQuestionsResponse>(200)]
-    public async Task<IActionResult> GetTestQuestionsAsync([FromQuery] Guid testId)
-    {
-        var questions = await _questionService.GetTestQuestionsAsync(testId);
-        return Ok(_mapper.Map<GetTestQuestionsResponse>(questions));
-    }
-
     [Route("get_by_id")]
+    [HttpGet]
     [ProducesResponseType<GetQuestionResponse>(200)]
     public async Task<IActionResult> GetQuestionById([FromQuery] Guid questionId)
     {

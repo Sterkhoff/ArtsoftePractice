@@ -1,8 +1,8 @@
 using Domain.Entities;
 
-namespace Domain.Interfaces;
+namespace Domain.Repositories;
 
-public interface IStoreUser
+public interface IUserRepository
 {
     public Task<Guid> AddUserAsync(User user);
     public Task<User> GetUserByIdAsync(Guid id);

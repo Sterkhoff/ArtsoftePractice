@@ -1,3 +1,4 @@
+using Api.Controllers.Question.Responses;
 using Api.Controllers.Test.Requests;
 using Api.Controllers.Test.Responses;
 using Api.Controllers.User.Responses;
@@ -14,8 +15,9 @@ public class TestController(ITestService testService, IMapper mapper) : Controll
     private readonly IMapper _mapper = mapper;
     
     [Route("create")]
+    [HttpPost]
     [ProducesResponseType<CreateTestResponse>(200)]
-    public async Task<IActionResult> CreateTestAsync(CreateTestRequest testRequest)
+    public async Task<IActionResult> CreateTestAsync([FromBody] CreateTestRequest testRequest)
     {
         var test = _mapper.Map<Domain.Entities.Test>(testRequest);
         await _testService.CreateTestAsync(test);
@@ -23,29 +25,21 @@ public class TestController(ITestService testService, IMapper mapper) : Controll
     }
 
     [Route("get_by_id")]
+    [HttpGet]
     [ProducesResponseType<GetTestResponse>(200)]
-    public async Task<IActionResult> GetTestByIdAsync(Guid testId)
+    public async Task<IActionResult> GetTestByIdAsync([FromQuery] Guid testId)
     {
         var test = await _testService.GetTestByIdAsync(testId);
         var testResponse = _mapper.Map<CreateTestResponse>(test);
         return Ok(testResponse);
     }
-
-    [Route("get_user_created_tests")]
-    [ProducesResponseType<GetUserCreatedTestsResponse>(200)]
-    public async Task<IActionResult> GetUserCreatedTestsAsync(Guid userId)
-    {
-        var tests = await _testService.GetUserCreatedTestsAsync(userId);
-        var createdTests = _mapper.Map<GetUserCreatedTestsResponse>(tests);
-        return Ok(createdTests);
-    }
     
-    [Route("get_user_passed_tests")]
-    [ProducesResponseType<GetUserPassedTestsResponse>(200)]
-    public async Task<IActionResult> GetUserPassedTestsAsync(Guid userId)
+    [Route("get_test_questions")]
+    [HttpGet]
+    [ProducesResponseType<GetTestQuestionsResponse>(200)]
+    public async Task<IActionResult> GetTestQuestionsAsync([FromQuery] Guid testId)
     {
-        var tests = await _testService.GetUserPassedTestsAsync(userId);
-        var passedTests = _mapper.Map<GetUserPassedTestsResponse>(tests);
-        return Ok(passedTests);
+        var questions = await _testService.GetTestQuestionsAsync(testId);
+        return Ok(_mapper.Map<GetTestQuestionsResponse>(questions));
     }
 }

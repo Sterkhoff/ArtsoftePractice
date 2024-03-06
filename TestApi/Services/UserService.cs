@@ -1,31 +1,40 @@
 ﻿using Domain.Entities;
-using Domain.Interfaces;
+using Domain.Repositories;
+using Services.Interfaces;
 
-namespace Services.Interfaces;
+namespace Services;
 
-public class UserService(IStoreUser storeUser, IStoreTest storeTest) : IUserService
+internal class UserService(IUserRepository userRepository, ITestRepository testRepository) : IUserService
 {
-    private readonly IStoreUser _storeUser = storeUser;
-    private readonly IStoreTest _storeTest = storeTest;
+    private readonly IUserRepository _userRepository = userRepository;
+    private readonly ITestRepository _testRepository = testRepository;
+    
     public async Task<Guid> CreateUserAsync(User user)
     {
-        return await user.SaveUserAsync(storeUser);
+        return await user.SaveUserAsync(_userRepository);
     }
 
-    public async Task<User> GetUserById(Guid id)
+    public async Task<User> GetUserByIdAsync(Guid id)
     {
-        return await _storeUser.GetUserByIdAsync(id);
+        return await _userRepository.GetUserByIdAsync(id);
     }
 
-    public async Task<User> GetUserByIdAsync(Guid userId)
+    public async Task PassTestAsync(Guid testId, Guid userId)
     {
-        return await _storeUser.GetUserByIdAsync(userId);
+        var user = await _userRepository.GetUserByIdAsync(userId);
+        var test = await _testRepository.GetTestByIdAsync(testId);
+        await user.AddPassedTest(test);
     }
 
-    public async Task UserPassTest(Guid testId, Guid userId)
+    public async Task<List<Test>> GetUserPassedTestsAsync(Guid userId)
     {
-        var user = await _storeUser.GetUserByIdAsync(userId);
-        var test = await _storeTest.GetTestByIdAsync(testId);
-        await user.PassTest(test);
+        var user = await _userRepository.GetUserByIdAsync(userId);
+        return user.PassedTests;
+    }
+
+    public async Task<List<Test>> GetUserCreatedTestsAsync(Guid userId)
+    {
+        var user = await _userRepository.GetUserByIdAsync(userId);
+        return user.CreatedTests;
     }
 }
