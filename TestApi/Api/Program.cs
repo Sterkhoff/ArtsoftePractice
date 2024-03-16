@@ -19,10 +19,7 @@ builder.Services.TryAddServices();
 builder.Services.TryAddInfrastructure();
 builder.Services.TryAddTraceId();
 builder.Services.AddLoggerServices();
-
-Log.Logger = new LoggerConfiguration().GetConfiguration().CreateLogger();
-
-builder.Host.UseSerilog(Log.Logger);
+builder.Host.UseSerilog((context, configuration) => configuration.GetConfiguration());
 
 var app = builder.Build();
 
