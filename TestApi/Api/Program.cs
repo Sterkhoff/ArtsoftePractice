@@ -1,8 +1,8 @@
 using Api.AutoMapper.QuestionMappingProfile;
 using Api.AutoMapper.TestMappingProfile;
 using Api.AutoMapper.UserMappingProfile;
-using Core.Logs;
 using Core.TraceIdLogic;
+using Core.Logs;
 using Infrastructure;
 using Serilog;
 using Services;
@@ -23,7 +23,7 @@ builder.Host.UseSerilog((context, configuration) => configuration.GetConfigurati
 
 var app = builder.Build();
 
-app.UseMiddleware<Core.Logs.Middleware.LogTraceIdMiddleware >();
+app.UseMiddleware<ReadTraceIdMiddleware>();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

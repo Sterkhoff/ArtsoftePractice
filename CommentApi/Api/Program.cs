@@ -1,7 +1,6 @@
 using Api.AutoMapper;
 using Core.HttpLogic;
 using Core.Logs;
-using Core.Logs.Middleware;
 using Dal;
 using TestApiConnectionLib.TestApiConnectionServices;
 using Logic;
@@ -27,9 +26,9 @@ builder.Host.UseSerilog((context, configuration) => configuration.GetConfigurati
     
 var app = builder.Build();
 
-// app.UseMiddleware<Core.Logs.Middleware.LogTraceIdMiddleware>();
+// app.UseMiddleware<Core.Logs.Middleware.ReadTraceIdMiddleware>();
 // Configure the HTTP request pipeline.
-app.UseMiddleware<LogTraceIdMiddleware>();
+app.UseMiddleware<ReadTraceIdMiddleware>();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

@@ -1,13 +1,13 @@
 ﻿using Core.TraceLogic.Interfaces;
 using Microsoft.AspNetCore.Http;
 
-namespace Core.Logs.Middleware;
+namespace Core.TraceIdLogic;
 
-public class LogTraceIdMiddleware  
+public class ReadTraceIdMiddleware  
 {  
     private readonly RequestDelegate _next;  
   
-    public LogTraceIdMiddleware(RequestDelegate next)  
+    public ReadTraceIdMiddleware(RequestDelegate next)  
     {  
         _next = next;  
     }  
