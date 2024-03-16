@@ -9,10 +9,12 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0"/>
+        <PackageReference Include="Polly" Version="8.3.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Libs\TestApiConnectionLib\TestApiConnectionLib.csproj" />
       <ProjectReference Include="..\Dal\Dal.csproj" />
       <ProjectReference Include="..\Logic\Logic.csproj" />
     </ItemGroup>
