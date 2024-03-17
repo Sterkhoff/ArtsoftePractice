@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{74DF07B0-2022-43AE-8CF6-DCC913FE8384}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApiConnectionLib", "..\Libs\TestApiConnectionLib\TestApiConnectionLib.csproj", "{A5786B42-07BD-4A1A-BD56-3CF4E1DA3C7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4E969F56-E942-48D8-8DE7-500B95E8427C} = {F314850D-E433-45C9-A6B7-49AB42421D9E}
+		{A5786B42-07BD-4A1A-BD56-3CF4E1DA3C7A} = {F314850D-E433-45C9-A6B7-49AB42421D9E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{25B4CDD4-8086-4C8B-B002-4B3C9FA609A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -41,5 +44,9 @@ Global
 		{74DF07B0-2022-43AE-8CF6-DCC913FE8384}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74DF07B0-2022-43AE-8CF6-DCC913FE8384}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74DF07B0-2022-43AE-8CF6-DCC913FE8384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5786B42-07BD-4A1A-BD56-3CF4E1DA3C7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5786B42-07BD-4A1A-BD56-3CF4E1DA3C7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5786B42-07BD-4A1A-BD56-3CF4E1DA3C7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5786B42-07BD-4A1A-BD56-3CF4E1DA3C7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using Core.TraceLogic.Interfaces;
 using Domain.Entities;
 using Domain.Repositories;
 
@@ -7,6 +8,7 @@ namespace Infrastructure.Data;
 public class TestRepository : ITestRepository
 {
     private readonly ConcurrentDictionary<Guid, Test> _testsData = new();
+    private readonly ITraceReader _traceReader;
     public async Task<Guid> AddTestAsync(Test test)
     {
         _testsData[test.Id] = test;

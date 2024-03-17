@@ -1,13 +1,16 @@
-﻿using Domain.Entities;
+﻿using Core.TraceLogic.Interfaces;
+using Domain.Entities;
 using Domain.Repositories;
 using Services.Interfaces;
 
 namespace Services;
 
-internal class TestService(ITestRepository testRepository, IUserRepository userRepository) : ITestService
+internal class TestService(ITestRepository testRepository, IUserRepository userRepository, IEnumerable<ITraceReader> traceReader) 
+    : ITestService
 {
     private readonly ITestRepository _testRepository = testRepository;
     private readonly IUserRepository _userRepository = userRepository;
+    private readonly IEnumerable<ITraceReader> _traceReader = traceReader;
     public async Task<Guid> CreateTestAsync(Test test)
     {
         var creator = await _userRepository.GetUserByIdAsync(test.CreatorId);
@@ -28,6 +31,7 @@ internal class TestService(ITestRepository testRepository, IUserRepository userR
 
     public async Task<Test> GetTestByIdAsync(Guid testId)
     {
-       return await _testRepository.GetTestByIdAsync(testId);
+        
+        return await _testRepository.GetTestByIdAsync(testId);
     }
 }

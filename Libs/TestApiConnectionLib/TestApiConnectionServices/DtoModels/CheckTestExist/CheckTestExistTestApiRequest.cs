@@ -1,0 +1,3 @@
+namespace TestApiConnectionLib.TestApiConnectionServices.DtoModels.CheckTestExist;
+
+public record CheckTestExistTestApiRequest(Guid TestId);
