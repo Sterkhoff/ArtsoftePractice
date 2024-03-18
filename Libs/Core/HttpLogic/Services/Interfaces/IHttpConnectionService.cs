@@ -10,7 +10,7 @@ internal interface IHttpConnectionService
     /// <summary>
     /// Отправляет запрос без использования Polly
     /// </summary>
-    Task<HttpResponseMessage> SendRequestAsync(HttpRequestMessage httpRequestMessage, HttpClient httpClient, 
+    public Task<HttpResponseMessage> SendRequestAsync(HttpRequestMessage httpRequestMessage, HttpClient httpClient, 
         CancellationToken cancellationToken, HttpCompletionOption httpCompletionOption = HttpCompletionOption.ResponseContentRead);
     
     
