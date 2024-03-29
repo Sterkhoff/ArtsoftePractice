@@ -31,7 +31,6 @@ internal class TestService(ITestRepository testRepository, IUserRepository userR
 
     public async Task<Test> GetTestByIdAsync(Guid testId)
     {
-        
         return await _testRepository.GetTestByIdAsync(testId);
     }
 }
