@@ -1,4 +1,4 @@
-namespace Core.HttpLogic.Services.Connection;
+namespace Core.Connection.HttpLogic.Services.Connection;
 
 public record struct HttpConnectionData()
 {

@@ -1,6 +1,6 @@
 ﻿using Polly;
 
-namespace Core.HttpLogic.Services.Polly;
+namespace Core.Connection.HttpLogic.Services.Polly;
 
 public class PollyRequestSender : IPollyRequestSender
 {

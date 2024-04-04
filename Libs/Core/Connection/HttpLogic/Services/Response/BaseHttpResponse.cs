@@ -1,7 +1,7 @@
 using System.Net;
 using System.Net.Http.Headers;
 
-namespace Core.HttpLogic.Services.Response;
+namespace Core.Connection.HttpLogic.Services.Response;
 
 public record BaseHttpResponse
 {

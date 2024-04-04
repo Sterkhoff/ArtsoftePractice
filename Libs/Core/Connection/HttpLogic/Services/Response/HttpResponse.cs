@@ -1,6 +1,4 @@
-using System.Net;
-
-namespace Core.HttpLogic.Services.Response;
+namespace Core.Connection.HttpLogic.Services.Response;
 
 public record HttpResponse<TResponse> : BaseHttpResponse
 {

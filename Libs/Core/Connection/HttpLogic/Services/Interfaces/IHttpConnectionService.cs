@@ -1,7 +1,7 @@
-using Core.HttpLogic.Services.Connection;
-using Core.HttpLogic.Services.Polly;
+using Core.Connection.HttpLogic.Services.Connection;
+using Core.Connection.HttpLogic.Services.Polly;
 
-namespace Core.HttpLogic.Services.Interfaces;
+namespace Core.Connection.HttpLogic.Services.Interfaces;
 
 internal interface IHttpConnectionService
 {
@@ -10,7 +10,7 @@ internal interface IHttpConnectionService
     /// <summary>
     /// Отправляет запрос без использования Polly
     /// </summary>
-    Task<HttpResponseMessage> SendRequestAsync(HttpRequestMessage httpRequestMessage, HttpClient httpClient, 
+    public Task<HttpResponseMessage> SendRequestAsync(HttpRequestMessage httpRequestMessage, HttpClient httpClient, 
         CancellationToken cancellationToken, HttpCompletionOption httpCompletionOption = HttpCompletionOption.ResponseContentRead);
     
     

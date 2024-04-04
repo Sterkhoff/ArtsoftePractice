@@ -1,7 +1,6 @@
-using System.ComponentModel.DataAnnotations;
-using Core.HttpLogic.Services.Polly;
+using Core.Connection.HttpLogic.Services.Polly;
 
-namespace Core.HttpLogic.Services.Request;
+namespace Core.Connection.HttpLogic.Services.Request;
 
 public record HttpRequestData
 {

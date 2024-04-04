@@ -1,4 +1,4 @@
-namespace Core.HttpLogic.Services;
+namespace Core.Connection.HttpLogic.Services;
 
 public enum ContentType
 {

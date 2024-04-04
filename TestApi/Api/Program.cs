@@ -1,11 +1,15 @@
 using Api.AutoMapper.QuestionMappingProfile;
 using Api.AutoMapper.TestMappingProfile;
 using Api.AutoMapper.UserMappingProfile;
+using Api.RabbitRpc;
 using Core.TraceIdLogic;
 using Core.Logs;
+using Core.Connection.RabbitRpcLogic.Services;
+using Core.TraceIdLogic.Middleware;
 using Infrastructure;
 using Serilog;
 using Services;
+using TestApiConnectionLib.TestApiConnectionServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,8 +23,9 @@ builder.Services.TryAddServices();
 builder.Services.TryAddInfrastructure();
 builder.Services.TryAddTraceId();
 builder.Services.AddLoggerServices();
+builder.Services.AddRabbitService();
+builder.Services.AddConsumer<TestApiReceiveHandler>();
 builder.Host.UseSerilog((context, configuration) => configuration.GetConfiguration());
-
 var app = builder.Build();
 
 app.UseMiddleware<ReadTraceIdMiddleware>();

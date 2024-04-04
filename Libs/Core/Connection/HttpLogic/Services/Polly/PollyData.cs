@@ -1,4 +1,4 @@
-﻿namespace Core.HttpLogic.Services.Polly;
+﻿namespace Core.Connection.HttpLogic.Services.Polly;
 /// <summary>
 /// Данные для конфигурации polly
 /// </summary>

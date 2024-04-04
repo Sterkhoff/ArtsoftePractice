@@ -1,10 +1,10 @@
-using Core.HttpLogic.Services.Connection;
-using Core.HttpLogic.Services.Interfaces;
-using Core.HttpLogic.Services.Polly;
-using Core.HttpLogic.Services.Request;
+using Core.Connection.HttpLogic.Services.Connection;
+using Core.Connection.HttpLogic.Services.Interfaces;
+using Core.Connection.HttpLogic.Services.Polly;
+using Core.Connection.HttpLogic.Services.Request;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Core.HttpLogic;
+namespace Core.Connection.HttpLogic;
 
 public static class HttpServiceStartUp
 {

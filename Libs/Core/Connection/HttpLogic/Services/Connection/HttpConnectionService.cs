@@ -1,7 +1,7 @@
-﻿using Core.HttpLogic.Services.Interfaces;
-using Core.HttpLogic.Services.Polly;
+﻿using Core.Connection.HttpLogic.Services.Interfaces;
+using Core.Connection.HttpLogic.Services.Polly;
 
-namespace Core.HttpLogic.Services.Connection;
+namespace Core.Connection.HttpLogic.Services.Connection;
 
 internal class HttpConnectionService : IHttpConnectionService
 {

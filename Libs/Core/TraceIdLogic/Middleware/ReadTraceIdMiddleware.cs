@@ -1,7 +1,7 @@
 ﻿using Core.TraceLogic.Interfaces;
 using Microsoft.AspNetCore.Http;
 
-namespace Core.TraceIdLogic;
+namespace Core.TraceIdLogic.Middleware;
 
 public class ReadTraceIdMiddleware  
 {  

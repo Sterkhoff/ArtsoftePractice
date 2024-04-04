@@ -1,30 +1,26 @@
 using System.Net.Mime;
 using System.Text;
-using Core.HttpLogic.Services.Connection;
-using Core.HttpLogic.Services.Interfaces;
-using Core.HttpLogic.Services.Response;
-using Core.Logs;
+using Core.Connection.HttpLogic.Services.Connection;
+using Core.Connection.HttpLogic.Services.Interfaces;
+using Core.Connection.HttpLogic.Services.Response;
 using Core.TraceLogic.Interfaces;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Serilog;
-using Serilog.Context;
+using ContentType = Core.Connection.HttpLogic.Services.ContentType;
 
-namespace Core.HttpLogic.Services.Request;
+namespace Core.Connection.HttpLogic.Services.Request;
 
 /// <inheritdoc />
 internal class HttpRequestService : IHttpRequestService
 {
     private readonly IHttpConnectionService _httpConnectionService;
     private readonly IEnumerable<ITraceWriter> _traceWriterList;
-    private readonly IEnumerable<ITraceReader> _traceReaders;
 
     ///
     public HttpRequestService(
         IHttpConnectionService httpConnectionService,
         IEnumerable<ITraceWriter> traceWriterList, IEnumerable<ITraceReader> traceReaders)
     {
-        _traceReaders = traceReaders;
         _httpConnectionService = httpConnectionService;
         _traceWriterList = traceWriterList;
     }

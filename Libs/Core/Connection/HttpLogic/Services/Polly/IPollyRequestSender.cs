@@ -1,4 +1,4 @@
-﻿namespace Core.HttpLogic.Services.Polly;
+﻿namespace Core.Connection.HttpLogic.Services.Polly;
 
 public interface IPollyRequestSender
 {
